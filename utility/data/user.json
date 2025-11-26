@@ -1,0 +1,10 @@
+{
+  "success": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "bad_credential":{
+    "username": "standard_user",
+    "password": "secret_sauc"
+  }
+}
