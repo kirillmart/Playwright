@@ -17,4 +17,8 @@ export class ErrorComponent {
   isNotVisible = async () => {
     await expect(this.locatorMessage).not.toBeVisible();
   }
+
+  isVisible = async () => {
+    await expect(this.locatorMessage).toBeVisible();
+  }
 }

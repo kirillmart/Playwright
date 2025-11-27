@@ -35,5 +35,11 @@ export class LoginFormComponent extends FormComponent {
 
     return super.validateDefaultLayout();
   }
+
+  loginAsStandardUser = async (data: ILogin) => {
+    await this.locatorUsernameInput.fill(data.username);
+    await this.locatorPasswordInput.fill(data.password);
+    await this.submit();
+  }
   
 }
