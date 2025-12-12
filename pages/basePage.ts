@@ -1,5 +1,5 @@
 import { Page } from "playwright-core";
-import { expect } from "playwright/test";
+import { expect } from "@playwright/test";
 
 export abstract class BasePage {
   readonly page: Page;
@@ -21,17 +21,5 @@ export abstract class BasePage {
   }
 
   abstract validateDefaultLayout() : Promise<void>;
-
-  validateViewportResize = async () => {
-    for (let width = this.page.viewportSize()!.width; width >= 320; width -= 320) {
-      await this.page.setViewportSize({ width, height: this.page.viewportSize()!.height });
-      
-      const screenWidth = await this.page.evaluate(() => {
-        return document.documentElement.clientWidth;
-      });
-
-      expect(screenWidth).toBe(width);
-    }
-  }
 
 }

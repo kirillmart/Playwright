@@ -1,4 +1,4 @@
-import { Locator, expect } from "@playwright/test";
+import { Locator, expect } from "playwright/test";
 import { Page } from "playwright-core";
 import { BasePage } from "./basePage";
 import { ProductItemComponent } from "../utility/components/productItemCoponent";
@@ -7,7 +7,6 @@ import { FooterComponent } from "../utility/components/footerComponent";
 import { HeaderComponent } from "../utility/components/headerComponent";
 
 export class InventoryPage extends BasePage{
-
   
   readonly locatorHeaderTitle: Locator;
   readonly locatorHeaderFilterSelect: Locator;
@@ -18,8 +17,8 @@ export class InventoryPage extends BasePage{
   constructor(page: Page) {
     super(page, "/inventory.html");  
     
-    this.locatorHeaderTitle = this.page.locator('#header_container').getByText('Products');
-    this.locatorHeaderFilterSelect = this.page.locator('[data-test="product_sort_container"]');
+    this.locatorHeaderTitle = page.getByTestId('title');
+    this.locatorHeaderFilterSelect = page.getByTestId('product-sort-container');
 
     this.footer = new FooterComponent(this.page);
     this.header = new HeaderComponent(this.page);
