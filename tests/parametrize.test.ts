@@ -11,7 +11,7 @@ let records: Array<{login: string}>;
 
 test.describe('Parametrized Login Test', () => {
 
-    records = parse(fs.readFileSync(path.join(__dirname, 'utility\\data\\users.csv')), {
+    records = parse(fs.readFileSync(path.join(__dirname, 'utility/data/users.csv')), {
         columns: true,
         skip_empty_lines: true
     });
