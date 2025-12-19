@@ -24,5 +24,5 @@ test.describe('Login Tests', () => {
         await loginPage.formComponent.submit();
         await expect(loginPage.formComponent.errorComponent.locatorMessage).toBeVisible();
 
-})
-});
+    });
+});;
