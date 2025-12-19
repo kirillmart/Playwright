@@ -2,7 +2,7 @@ import { test, expect } from '../fixtures/loginFixture';
 import { LoginPage } from '../pages/loginPage';
 import { InventoryPage } from '../pages/inventoryPage';
 import { parse } from 'csv-parse/sync';
-import path from 'path/win32';
+import path from 'path';
 import fs from 'fs';
 
 let loginPage: LoginPage;
@@ -11,7 +11,7 @@ let records: Array<{login: string}>;
 
 test.describe('Parametrized Login Test', () => {
 
-    records = parse(fs.readFileSync(path.join(__dirname, '../utility/data/users.csv')), {
+    records = parse(fs.readFileSync(path.join(__dirname, 'utility\\data\\users.csv')), {
         columns: true,
         skip_empty_lines: true
     });
