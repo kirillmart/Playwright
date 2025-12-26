@@ -20,6 +20,4 @@ export abstract class BasePage {
     await this.page.waitForLoadState('networkidle')
   }
 
-  abstract validateDefaultLayout() : Promise<void>;
-
 }

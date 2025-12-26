@@ -2,7 +2,6 @@ import { test, expect } from '../fixtures/loginFixture';
 import cart from '../utility/data/cart.json' assert { type: 'json' };
 import { InventoryPage } from '../pages/inventoryPage';
 import { CartPage } from '../pages/cartPage';
-import { LoginPage } from '../pages/loginPage';
 
 
 let inventoryPage: InventoryPage;
@@ -22,7 +21,11 @@ test('Check shopping', async ({ login, page }) => {
     await expect(cartPage.locatorContinueShoppingButton).toBeVisible();
     await expect(cartPage.locatorCheckoutButton).toBeVisible();
     for (const product of cartPage.products) {
-        await product.validateDefaultUX();
+        await product.locatorProductDescription.isVisible();
+        await product.locatorProductTitle.isVisible();
+        await product.locatorProductPrice.isVisible();
+        await product.locatorQuantity.isVisible();
+        await product.locatorRemoveButton.isVisible();
     }
 });
 

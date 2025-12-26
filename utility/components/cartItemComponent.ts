@@ -1,7 +1,5 @@
 import { Locator, Page } from "playwright-core";
 import { ICartProduct} from "../interfaces/ICartProduct";
-import { IProduct} from "../interfaces/IProduct";
-import { expect } from "playwright/test";
 
 export class CartItemComponent {
   readonly page: Page;
@@ -22,13 +20,5 @@ export class CartItemComponent {
     this.locatorProductPrice = container.locator('.inventory_item_price', {hasText: `$${cart.product.price}`});
     this.locatorRemoveButton = container.getByRole('button', { name: 'Remove'});
 
-  }
-
-  validateDefaultUX = async () => {
-    await expect(this.locatorQuantity).toBeVisible();
-    await expect(this.locatorProductTitle).toBeVisible();
-    await expect(this.locatorProductDescription).toBeVisible();
-    await expect(this.locatorProductPrice).toBeVisible();
-    await expect(this.locatorRemoveButton).toBeVisible();
   }
 }

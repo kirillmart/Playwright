@@ -6,7 +6,8 @@ import { Locator, expect } from "playwright/test";
 import { FooterComponent } from "../utility/components/footerComponent";
 import { HeaderComponent } from "../utility/components/headerComponent";
 
-export class CartPage extends BasePage{ 
+export class CartPage extends BasePage{
+  
     readonly products: CartItemComponent[];  
     readonly locatorYourCart: Locator;
     readonly locatorQty: Locator;
