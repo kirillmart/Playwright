@@ -1,6 +1,5 @@
 import { test as base, Page } from '@playwright/test';
 import { LoginPage } from '../pages/loginPage';
-import { InventoryPage } from '../pages/inventoryPage';
 import data from '../utility/data/user.json' assert { type: 'json' };
 import products from '../utility/data/products.json' assert { type: 'json' };
 
