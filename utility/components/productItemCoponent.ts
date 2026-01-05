@@ -6,7 +6,6 @@ export class ProductItemComponent {
 
   readonly locatorProductPhoto: Locator;
   readonly locatorProductTitleSet: Locator;
-  readonly locatorProductTitle: Locator;
   readonly locatorProductDescription: Locator;
   readonly locatorProductPrice: Locator;
   readonly locatorAddCartButton: Locator;
@@ -16,7 +15,6 @@ export class ProductItemComponent {
     this.page = page;
 
     this.locatorProductTitleSet = this.page.locator('a[id$=title_link]', {hasText: product.name});
-    this.locatorProductTitle = this.page.getByTestId('inventory-item-name');
     const locatorContainer = this.page.locator('#inventory_container .inventory_item', { has: this.locatorProductTitleSet});
     this.locatorProductPhoto  = locatorContainer.getByAltText(product.name);
     this.locatorProductDescription = locatorContainer.getByText(product.description);

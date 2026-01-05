@@ -13,10 +13,10 @@ let inventoryPage: InventoryPage;
 let cartPage: CartPage;
 let records: Array<{login: string}>;
 let productNames: Array<string> = [
+    products.az[0].name,
     products.az[1].name,
     products.az[2].name,
-    products.az[3].name,
-    products.az[4].name
+    products.az[3].name
 ];
 
 let multipleProductNames: Array<Array<string>> = [
@@ -50,7 +50,7 @@ test.describe('Parametrized shop test', () => {
             const productIndex = productNames.indexOf(productName) + 1;
             inventoryPage = new InventoryPage(page);
             await inventoryPage.toBe();
-            await inventoryPage.items.find(item => item.locatorProductTitle.innerText().then(text => text === productName))?.addToCart();
+            await inventoryPage.items.find(item => item.locatorProductTitleSet.innerText().then(text => text === productName))?.addToCart();
             await inventoryPage.header.visitCart();
             cartPage = new CartPage(page, [cart[productIndex.toString() as keyof typeof cart]]);
             await cartPage.toBe();
