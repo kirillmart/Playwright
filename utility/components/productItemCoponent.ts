@@ -5,6 +5,7 @@ export class ProductItemComponent {
   readonly page: Page;
 
   readonly locatorProductPhoto: Locator;
+  readonly locatorProductTitleSet: Locator;
   readonly locatorProductTitle: Locator;
   readonly locatorProductDescription: Locator;
   readonly locatorProductPrice: Locator;
@@ -14,8 +15,9 @@ export class ProductItemComponent {
   constructor(page: Page, product: IProduct){
     this.page = page;
 
-    this.locatorProductTitle = this.page.locator('a[id$=title_link]', {hasText: product.name});
-    const locatorContainer = this.page.locator('#inventory_container .inventory_item', { has: this.locatorProductTitle});
+    this.locatorProductTitleSet = this.page.locator('a[id$=title_link]', {hasText: product.name});
+    this.locatorProductTitle = this.page.getByTestId('inventory-item-name');
+    const locatorContainer = this.page.locator('#inventory_container .inventory_item', { has: this.locatorProductTitleSet});
     this.locatorProductPhoto  = locatorContainer.getByAltText(product.name);
     this.locatorProductDescription = locatorContainer.getByText(product.description);
     this.locatorProductPrice = locatorContainer.getByText(`$${product.price}`);
@@ -25,7 +27,7 @@ export class ProductItemComponent {
 
   validateDefaultUX = async () => {
     await expect(this.locatorProductPhoto).toBeVisible();
-    await expect(this.locatorProductTitle).toBeVisible();
+    await expect(this.locatorProductTitleSet).toBeVisible();
     await expect(this.locatorProductDescription).toBeVisible();
     await expect(this.locatorProductPrice).toBeVisible();
     await expect(this.locatorAddCartButton).toBeVisible();

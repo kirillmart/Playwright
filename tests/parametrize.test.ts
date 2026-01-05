@@ -56,14 +56,15 @@ test.describe('Parametrized shop test', () => {
             await cartPage.toBe();
         });         
     }
+    
     for (const productSet of multipleProductNames) {
         test('Add multiple products to cart: ' + productSet.join(', '), async ({ login, page }) => {
             inventoryPage = new InventoryPage(page);
             await inventoryPage.toBe();
             for (const productName of productSet) {
                 for (const item of inventoryPage.items) {
-                    const title = await item.locatorProductTitle.innerText();
-                    if (title === productName) {
+                    const title = await item.locatorProductTitleSet.innerText();
+                    if (title.startsWith(productName)) {
                         await item.addToCart();
                         break;
                     }
@@ -86,8 +87,8 @@ test.describe('Parametrized shop test', () => {
             await inventoryPage.toBe();
             for (const productName of productSet) {
                 for (const item of inventoryPage.items) {
-                    const title = await item.locatorProductTitle.innerText();
-                    if (title === productName) {
+                    const title = await item.locatorProductTitleSet.innerText();
+                    if (title.startsWith(productName)) {
                         await item.addToCart();
                         break;
                     }
