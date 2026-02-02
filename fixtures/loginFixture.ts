@@ -2,6 +2,7 @@ import { test as base, Page } from '@playwright/test';
 import { LoginPage } from '../pages/loginPage';
 import data from '../utility/data/user.json' assert { type: 'json' };
 import products from '../utility/data/products.json' assert { type: 'json' };
+import DB from '../utility/db';
 
 type Fixtures = {
     visitLoginPage: LoginPage;
@@ -9,6 +10,7 @@ type Fixtures = {
     correctLoginData: any;
     incorrectLoginData: any;
     productsToAdd: any;
+    database: DB;
 };
 
 export const test = base.extend<Fixtures>({
@@ -48,9 +50,14 @@ export const test = base.extend<Fixtures>({
         bikeLight: products.az[2].name,
         boltTShirt: products.az[3].name,
         fleeceJacket: products.az[4].name
+    },
+
+    database: async ({}, use) => {
+        const db = new DB();
+        await db.executeQuery(`DELETE FROM User;`);
+        await db.executeQuery(`INSERT INTO User VALUES ('1', '${data.success.username}', '${data.success.password}');`);
+        await use(db);
     }
-
-
 });
 
 export { expect, Page } from '@playwright/test';

@@ -31,4 +31,10 @@ export class LoginPage extends BasePage{
 
     await this.formComponent.validateDefaultLayout();
   }
+
+  loginWith = async (username: string, password: string) => {
+    await this.formComponent.locatorUsernameInput.fill(username);
+    await this.formComponent.locatorPasswordInput.fill(password);
+    await this.formComponent.submit();
+  }
 }

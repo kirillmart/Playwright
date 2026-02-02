@@ -9,10 +9,16 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.56.1",
-    "@types/node": "^24.9.1"
+    "@types/bcrypt": "^6.0.0",
+    "@types/node": "^24.9.1",
+    "@types/pg": "^8.16.0",
+    "@types/sqlite3": "^3.1.11"
   },
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "csv": "^6.4.1",
-    "dotenv": "^17.2.3"
+    "dotenv": "^17.2.3",
+    "pg": "^8.17.2",
+    "sqlite3": "^5.1.7"
   }
 }
